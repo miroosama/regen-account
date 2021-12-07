@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
-import { COIN_DENOM, REGEN_ENDPOINT} from '../utils/constants';
+import { COIN_DENOM_MINIMAL, REGEN_ENDPOINT} from '../utils/constants';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -23,8 +23,10 @@ const AccountContainer = ({ address }: AccountProps) => {
   useEffect(() => {
     const getBalance = async () => {
       const client = await StargateClient.connect(REGEN_ENDPOINT);
-      const { amount } = await client.getBalance(address, COIN_DENOM);
-      setBalance(amount);
+      const balanceRes = await client.getBalance(address, COIN_DENOM_MINIMAL);
+      if (balanceRes && balanceRes.amount) {
+        setBalance(balanceRes.amount);
+      }
     }
     if (address) getBalance();
   }, [address]);

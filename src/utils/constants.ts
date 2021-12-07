@@ -1,4 +1,4 @@
-export const COIN_DENOM = 'REGEN';
+export const COIN_DENOM_MINIMAL = 'uregen';
 
 export const CHAIN_ID = 'regen-hambach-1';
 
@@ -11,15 +11,15 @@ export const REGEN_KEPLR_SETUP = {
   // The name of the chain to be displayed to the user.
   chainName: 'Regen Hambach Testnet',
   // RPC endpoint of the chain.
-  rpc: 'http://hambach.regen.network:26657/',
+  rpc: REGEN_ENDPOINT,
   // REST endpoint of the chain.
   rest: 'http://hambach.regen.network:1317/',
   // Staking coin information
   stakeCurrency: {
     // Coin denomination to be displayed to the user.
-    coinDenom: COIN_DENOM,
+    coinDenom: 'REGEN',
     // Actual denom (i.e. uatom, uscrt) used by the blockchain.
-    coinMinimalDenom: 'uregen',
+    coinMinimalDenom: COIN_DENOM_MINIMAL,
     // # of decimal points to convert minimal denomination to user-facing denomination.
     coinDecimals: 6,
     // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
